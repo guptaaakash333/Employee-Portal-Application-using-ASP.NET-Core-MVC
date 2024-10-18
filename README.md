@@ -22,3 +22,5 @@ The design will prioritize usability, featuring a clean layout and easy navigati
 This Employee Portal Application aims to enhance organizational efficiency by providing a centralized platform for managing employee information. By leveraging ASP.NET Core MVC, we will ensure that the application is robust, scalable, and secure, meeting the needs of HR professionals and management teams alike. 
 
 Overall, this application is designed to simplify employee data management while offering a positive user experience.
+
+-Thank You 
