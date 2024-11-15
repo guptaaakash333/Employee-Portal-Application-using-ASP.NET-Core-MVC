@@ -1,0 +1,163 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Create New Employee";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 border rounded">
+                    <h2 class="text-center text-primary mb-4">👤 Create New Employee</h2>
+
+                    <form asp-controller="Employee" asp-action="Create" method="post">
+                        <div class="row mb-3">
+                            <label asp-for="FullName" class="col-sm-3 col-form-label text-end">Full Name:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="FullName" class="form-control" placeholder="Enter full name" title="Full Name" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Email" class="col-sm-3 col-form-label text-end">📧 Email:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Email" class="form-control" placeholder="Enter email address" title="Email Address" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Department" class="col-sm-3 col-form-label text-end">🏢 Department:</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <select asp-for="Department" class="form-control" asp-items="@ViewBag.DepartmentOptions" title="Select Department" id="DepartmentDropdown">
+                                        <option value="">Select Department</option>
+                                    </select>
+                                    <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
+                                </div>
+                                <span asp-validation-for="Department" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Position" class="col-sm-3 col-form-label text-end">💼 Position:</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <select asp-for="Position" class="form-control" id="PositionDropdown" title="Select Position">
+                                        <option value="">Select Position</option>
+                                    </select>
+                                    <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
+                                </div>
+                                <span asp-validation-for="Position" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="HireDate" class="col-sm-3 col-form-label text-end">🗓️ Hire Date:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="HireDate" class="form-control" type="date" title="Select Hire Date" />
+                                <span asp-validation-for="HireDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="DateOfBirth" class="col-sm-3 col-form-label text-end">🎂 Date of Birth:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="DateOfBirth" class="form-control" type="date" title="Select Date of Birth" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Type" class="col-sm-3 col-form-label text-end">👔 Employee Type:</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <select asp-for="Type" class="form-control" asp-items="@ViewBag.EmployeeTypeOptions" title="Select Employee Type">
+                                        <option value="">Select Employee Type</option>
+                                    </select>
+                                    <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
+                                </div>
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label asp-for="Gender" class="col-sm-3 col-form-label text-end">⚧ Gender:</label>
+                            <div class="col-sm-9">
+
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Male" />
+                                    <label class="form-check-label" asp-for="Gender">Male</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Female" />
+                                    <label class="form-check-label" asp-for="Gender">Female</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Other" />
+                                    <label class="form-check-label" asp-for="Gender">Other</label>
+                                </div>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Salary" class="col-sm-3 col-form-label text-end">💰 Salary:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Salary" class="form-control" placeholder="Enter salary amount" title="Salary" />
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success btn-lg me-3"><i class="bi bi-check-circle-fill"></i> Create</button>
+                            <a class="btn btn-primary btn-lg" asp-controller="Employee" asp-action="List"><i class="bi bi-arrow-left-circle-fill"></i> Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            debugger
+            // Function to load positions and set the selected position
+            function loadPositions(department, selectedPosition) {
+                if (department) {
+                    $.getJSON('@Url.Action("GetPositions")', { department: department }, function (data) {
+                        var $positionDropdown = $('#PositionDropdown');
+                        $positionDropdown.empty();
+                        $positionDropdown.append('<option value="">Select Position</option>');
+                        $.each(data, function (index, value) {
+                            var selected = (value === selectedPosition) ? 'selected' : '';
+                            $positionDropdown.append('<option value="' + value + '" ' + selected + '>' + value + '</option>');
+                        });
+                    });
+                } else {
+                    $('#PositionDropdown').empty().append('<option value="">Select Position</option>');
+                }
+            }
+
+            // Check the DepartmentDropdown value on page load and populate PositionDropdown
+            var department = $('#DepartmentDropdown').val();
+            var selectedPosition = '@(Model?.Position ?? "")'; // Safely check if Model or Model.Position is null
+
+            if (department) {
+                loadPositions(department, selectedPosition);
+            }
+
+            // When the Department dropdown value changes, load the corresponding positions
+            $('#DepartmentDropdown').change(function () {
+                var department = $(this).val();
+                loadPositions(department, ''); // Clear selected position when department changes
+            });
+        });
+    </script>
+}

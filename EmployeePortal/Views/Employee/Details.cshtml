@@ -1,0 +1,71 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 border rounded">
+                    <div class="text-center mb-4">
+                        <h2 class="text-primary mb-1">👤 @Model.FullName</h2>
+                        <p class="text-muted">Employee ID: @Model.Id</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th class="text-muted text-start ps-3" style="width: 30%;">📧 Email:</th>
+                                    <td class="fw-bold text-dark text-start ps-3"><a href="mailto:@Model.Email" class="text-decoration-none text-dark">@Model.Email</a></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">💼 Position:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.Position</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">🏢 Department:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.Department</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">🗓️ Hire Date:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.HireDate?.ToString("MMMM dd, yyyy")</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">🎂 Date of Birth:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.DateOfBirth?.ToString("MMMM dd, yyyy")</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">👔 Employee Type:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.Type</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">⚧ Gender:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">@Model.Gender</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start ps-3">💰 Salary:</th>
+                                    <td class="fw-bold text-dark text-start ps-3">$@Model.Salary?.ToString("N2")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-around mt-4">
+                        <a class="btn btn-primary btn-lg px-5 py-2 rounded-pill shadow-sm" asp-controller="Employee" asp-route-id="@Model.Id" asp-action="Update">
+                            <i class="bi bi-pencil-fill"></i> Update
+                        </a>
+                        <a class="btn btn-danger btn-lg px-5 py-2 rounded-pill shadow-sm" asp-controller="Employee" asp-route-id="@Model.Id" asp-action="Delete">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                        <a class="btn btn-secondary btn-lg px-5 py-2 rounded-pill shadow-sm" asp-controller="Employee" asp-action="List">
+                            <i class="bi bi-arrow-left-circle-fill"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
